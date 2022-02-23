@@ -10,3 +10,6 @@ attendance.
 - To create a UI
 - To learn PHP
 - Connect Databse
+
+### Future Changes
+Change the database to only one table where we gather all the data in one place with category of faculty and student
