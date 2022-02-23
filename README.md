@@ -8,3 +8,4 @@ helps to generate reports, send emails for giving reminders for reduced
 attendance.
 ### Project Objectives
 To create a UI
+To learn php
