@@ -7,5 +7,5 @@ server as a scheduled job and with this database create a web-based UI which
 helps to generate reports, send emails for giving reminders for reduced
 attendance.
 ### Project Objectives
-To create a UI
-To learn php
+- To create a UI
+- To learn PHP
