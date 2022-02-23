@@ -9,3 +9,4 @@ attendance.
 ### Project Objectives
 - To create a UI
 - To learn PHP
+- Connect Databse
