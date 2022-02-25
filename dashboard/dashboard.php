@@ -23,8 +23,11 @@
 
     <body>
         <a href="studentinfo.php">Student Details</a>
+        <br>
         <a href="attendance.php">Attendance Details</a>
+        <br>
         <a href="facultyinfo.php">Facultiy Details</a>
+        
         
     </body>
 </html>
