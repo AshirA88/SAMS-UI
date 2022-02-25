@@ -30,9 +30,25 @@
     </head>
 
     <body>
-    Faculty Inforamtion
+    <table style="width:100%">
+  <tr>
+    <th>Faculty Name</th>
+    <th>Faculty Subject</th>
+    <th>Faculty Contact</th>
+  </tr>
+  <tr>
+    <td>Alfreds Futterkiste</td>
+    <td>Software Management</td>
+    <td>967378491</td>
+  </tr>
+  <tr>
+    <td>Mary Kom</td>
+    <td>Automation and Hardware</td>
+    <td>967378422</td>
+  </tr>
+</table>
     </body>
-</html>
+
 
 <!-- PHP end here -->
 <?php
