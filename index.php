@@ -17,7 +17,7 @@
         if($query->rowCount() > 0)
         {
             $_SESSION['alogin']=$_POST['username'];
-            echo "<script type='text/javascript'> document.location = 'main-page.php'; </script>";
+            echo "<script type='text/javascript'> document.location = 'dashboard.php'; </script>";
         } 
         else
         {
