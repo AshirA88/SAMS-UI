@@ -31,6 +31,44 @@
 
     <body>
     hello student
+
+        <table>
+            <!-- Header of Table -->
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>E-Mail</th>
+                    <th>PRN</th>
+                    <th>Mobile Number</th>
+                </tr>
+            </thead>
+            
+            <!-- PHP handle to SELECT data from "studentinfo" table -->
+            <?php $sql = "SELECT * from  studentinfo ";
+                $query = $dbh -> prepare($sql);
+                $query->execute();
+                $results=$query->fetchAll(PDO::FETCH_OBJ);
+                $cnt=1;
+                if($query->rowCount() > 0)
+                {
+                foreach($results as $result)
+                    {				?>
+            
+            <!-- Body of Table -->
+            <tbody>
+                <tr>
+                    <td><?php echo htmlentities($cnt);?></td>
+                    <td><?php echo htmlentities($result->Name);?></td>
+                    <td><?php echo htmlentities($result->Email);?></td>
+                    <td><?php echo htmlentities($result->PRN);?></td>
+                    <td><?php echo htmlentities($result->Mobile);?></td> <!-- Chnaged the name of coloumn name pls keep it one word only -->
+                </tr>
+                <!-- To count number of rows just like a counter -->
+                <?php $cnt=$cnt+1; }} ?>
+            </tbody>
+        </table>
+
     </body>
 </html>
 
