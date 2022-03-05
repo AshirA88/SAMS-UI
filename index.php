@@ -33,6 +33,9 @@
     <head>
         <title>Smart Attendance Management System Using Raspberry PI</title>
         <link rel = "icon" href = "img/icon.png" type = "image/x-icon">
+        <link href='http://fonts.googleapis.com/css?family=Oswald:400,300' rel='stylesheet' type='text/css' />
+        <link href='http://fonts.googleapis.com/css?family=Abel|Satisfy' rel='stylesheet' type='text/css' />
+        <link href="default.css" rel="stylesheet" type="text/css" media="all" />
     </head>
 
     <body>
@@ -40,25 +43,37 @@
         This templete is taken from my previous project so style accordingly do not change the content part
         in <form> which is from line 50 to 62 rest everything is supposed to be beautified 
      -->
+    <div id="header-wrapper">
+	    <div id="header">
+		    <div id="logo">
+			    <h1><a href="#">SMART ATTENDANCE MANAGEMENT SYSTEM</a></h1>
+		    </div>
+        </div>
+    </div>
+  <!--Middle page-->  
+<div id="wrapper">
+	<div id="page-wrapper">
+		<div id="page">
+		   <div id="wide-content">
     <div class="login-page bk-img" style="background-image: url(img/banner.png);">
 		<div class="form-content">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6 col-md-offset-3">
-						<h1 class="text-center text-bold text-light mt-4x">Smart Attendance Management System Log in</h1>
+						<h1 class="text-center text-bold text-light mt-4x">LOGIN</h1><br>
 						<div class="well row pt-2x pb-3x bk-light">
 							<div class="col-md-8 col-md-offset-2">
 								<form method="post">
 
 									<label for="" class="text-uppercase text-sm">Your Username </label>
-									<input type="text" placeholder="Username" name="username" class="form-control mb">
+									<input type="text" placeholder="Username" name="username" class="form-control mb"><br><br>
 
 									<label for="" class="text-uppercase text-sm">Password</label>
-									<input type="password" placeholder="Password" name="password" class="form-control mb">
+									<input type="password" placeholder="Password" name="password" class="form-control mb"><br>
 
 
 
-									<button class="btn btn-primary btn-block" name="login" type="submit">LOGIN</button>
+									<button class="button-style a:hover" name="login" type="submit">LOGIN</button>
 
 								</form>
 							</div>
