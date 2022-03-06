@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 05, 2022 at 07:02 AM
+-- Generation Time: Mar 05, 2022 at 10:45 PM
 -- Server version: 10.4.17-MariaDB
--- PHP Version: 7.3.26
+-- PHP Version: 7.4.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -55,14 +55,14 @@ CREATE TABLE `studentinfo` (
   `Name` varchar(30) NOT NULL,
   `Email` text NOT NULL,
   `PRN` int(12) NOT NULL,
-  `Mobile Number` bigint(12) NOT NULL
+  `Mobile` bigint(12) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `studentinfo`
 --
 
-INSERT INTO `studentinfo` (`Name`, `Email`, `PRN`, `Mobile Number`) VALUES
+INSERT INTO `studentinfo` (`Name`, `Email`, `PRN`, `Mobile`) VALUES
 ('rohit', 'rohitladdha26gmail.com', 1032181279, 9860687488),
 ('manali', 'manaligadiya1111@gmail.com', 1032180728, 9673791837);
 
