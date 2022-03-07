@@ -38,7 +38,7 @@
         
         <div class="profile">
                 <img src="image.jpg"alt="profile image">
-                
+                <h3>Welcome <?php echo ($_SESSION['username']); ?>&nbsp;</h3>
                 </div>
                 
                 <ul>
@@ -63,7 +63,10 @@
                
             </ul>
         </div>
+        
         </div>
+
+        
     </div>
         
         
