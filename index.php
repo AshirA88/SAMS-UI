@@ -16,6 +16,7 @@
         $results=$query->fetchAll(PDO::FETCH_OBJ);
         if($query->rowCount() > 0)
         {
+            $_SESSION['username']=$email;
             $_SESSION['alogin']=$_POST['username'];
             echo "<script type='text/javascript'> document.location = 'dashboard.php'; </script>";
         } 
