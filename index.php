@@ -83,5 +83,8 @@
 			</div>
 		</div>
 	</div>
+    <div id="footer" class="container">
+	<p>&copy; All rights reserved <a href="http://templated.co" rel="nofollow">@PROJECT</p>
+</div>
     </body>
 </html>
