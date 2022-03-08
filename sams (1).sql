@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 05, 2022 at 10:45 PM
+-- Generation Time: Mar 08, 2022 at 07:19 PM
 -- Server version: 10.4.17-MariaDB
--- PHP Version: 7.4.14
+-- PHP Version: 7.3.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,6 +24,26 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `faculty`
+--
+
+CREATE TABLE `faculty` (
+  `Name` varchar(30) NOT NULL,
+  `Subject` varchar(30) NOT NULL,
+  `Contact` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `faculty`
+--
+
+INSERT INTO `faculty` (`Name`, `Subject`, `Contact`) VALUES
+('Peter Swan', 'Software Modeling', 9878976793),
+('Lucky Champman', 'Computer Automation', 7813688961);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `login`
 --
 
@@ -31,19 +51,18 @@ CREATE TABLE `login` (
   `id` int(11) NOT NULL,
   `UserName` varchar(100) NOT NULL,
   `Password` varchar(100) NOT NULL,
-  `TimeOfUpdate` timestamp NOT NULL DEFAULT current_timestamp(),
-  `name_fk` int(8) NOT NULL
+  `TimeOfUpdate` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `login`
 --
 
-INSERT INTO `login` (`id`, `UserName`, `Password`, `TimeOfUpdate`, `name_fk`) VALUES
-(1, 'ashir', 'ashir', '2022-02-23 13:17:41', 0),
-(2, 'atharva', 'atharva', '2022-02-23 13:17:41', 0),
-(3, 'rohit', 'rohit', '2022-02-23 13:18:09', 0),
-(4, 'manali', 'manali', '2022-02-23 13:18:09', 0);
+INSERT INTO `login` (`id`, `UserName`, `Password`, `TimeOfUpdate`) VALUES
+(1, 'ashir', 'ashir', '2022-02-23 13:17:41'),
+(2, 'atharva', 'atharva', '2022-02-23 13:17:41'),
+(3, 'rohit', 'rohit', '2022-02-23 13:18:09'),
+(4, 'manali', 'manali', '2022-02-23 13:18:09');
 
 -- --------------------------------------------------------
 
@@ -55,14 +74,14 @@ CREATE TABLE `studentinfo` (
   `Name` varchar(30) NOT NULL,
   `Email` text NOT NULL,
   `PRN` int(12) NOT NULL,
-  `Mobile` bigint(12) NOT NULL
+  `Mobile Number` bigint(12) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `studentinfo`
 --
 
-INSERT INTO `studentinfo` (`Name`, `Email`, `PRN`, `Mobile`) VALUES
+INSERT INTO `studentinfo` (`Name`, `Email`, `PRN`, `Mobile Number`) VALUES
 ('rohit', 'rohitladdha26gmail.com', 1032181279, 9860687488),
 ('manali', 'manaligadiya1111@gmail.com', 1032180728, 9673791837);
 
@@ -88,8 +107,7 @@ CREATE TABLE `stud_info` (
 -- Indexes for table `login`
 --
 ALTER TABLE `login`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `name_fk` (`name_fk`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `stud_info`
