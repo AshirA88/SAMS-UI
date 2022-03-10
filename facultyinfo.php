@@ -34,7 +34,7 @@
 <div id="header-wrapper">
 	    <div id="header">
 		    <div id="logo">
-			    <h1><a href="#">Faculty Info</a></h1>
+			    <h1><a href="javascript:history.back()"><-</a> <a href="#">Faculty Info</a></h1>
 		    </div>
       </div>
   </div>
