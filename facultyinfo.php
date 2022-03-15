@@ -50,6 +50,7 @@ tr:nth-child(even) {
 	    <div id="header">
 		    <div id="logo">
         
+        <h1><a href="javascript:history.back()"><-</a> 
 			    <a>Faculty Info</a></h1>
 		    </div>
       </div>
