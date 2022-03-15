@@ -25,7 +25,7 @@
     
         <title>Dashboard</title>
         <link rel = "icon" href = "img/icon.png" type = "image/x-icon">
-        <link rel = "stylesheet" href = "style.css">
+        <link rel = "stylesheet" href = "css/style.css">
         
     </head>
 
@@ -38,14 +38,14 @@
         
         <div class="profile">
                 <img src="image.jpg"alt="profile image">
-                <h3>Welcome <?php echo ($_SESSION['username']); ?>&nbsp;</h3>
+                
                 </div>
                 
                 <ul>
                 
                 
                 <li>
-                    <a href="#">
+                    
                         
                     <a href="attendance.php">
                     <span>Self Attendance</span> 
@@ -53,20 +53,25 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                   
                         
                     <a href="facultyinfo.php">
                     <span>Teaching Faculty</span> 
                     </a>
                     </a>
                 </li>
+                <li>
+                   
+                        
+                   <a href="index.php">
+                   <span>Log Out</span> 
+                   </a>
+                   </a>
+               </li>
                
             </ul>
         </div>
-        
         </div>
-
-        
     </div>
         
         
