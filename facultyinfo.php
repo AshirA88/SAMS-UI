@@ -27,14 +27,30 @@
 <link rel = "icon" href = "img/icon.png" type = "image/x-icon">
 <link href='http://fonts.googleapis.com/css?family=Oswald:400,300' rel='stylesheet' type='text/css' />
 <link href='http://fonts.googleapis.com/css?family=Abel|Satisfy' rel='stylesheet' type='text/css' />
-<link href="default.css" rel="stylesheet" type="text/css" media="all" />
-</head>
+<link href="css/default.css" rel="stylesheet" type="text/css" media="all" />
 
+</head>
+<style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #D6EEEE;
+}
+</style>
 <body>
 <div id="header-wrapper">
 	    <div id="header">
 		    <div id="logo">
-			    <h1><a href="javascript:history.back()"><-</a> <a href="#">Faculty Info</a></h1>
+        
+			    <a>Faculty Info</a></h1>
 		    </div>
       </div>
   </div>
@@ -43,56 +59,40 @@
 		<div id="page">
 		   <div id="wide-content">
 <div id= "table">
-<table align="center" border="1px" style="width:600px; line-height:40px;"> 
-	<tr> 
-		<th colspan="4"><h2>Faculty Record</h2></th> 
-		</tr> 
-			  <th>Sr </th> 
-			  <th> Name </th> 
-			  <th> Subject </th> 
-			  <th> Contact </th> 
-			  
-		</tr> 
-    <?php $sql = "SELECT * from  faculty "; //Conected the table here
-                $query = $dbh -> prepare($sql);
-                $query->execute();
-                $results=$query->fetchAll(PDO::FETCH_OBJ);
-                $cnt=1; //counter
-                if($query->rowCount() > 0)
-                {
-                foreach($results as $result) //for loop
-                    {				?>
-            
-            <!-- Body of Table -->
-            <tbody>
-                <tr>
-                    <td><?php echo htmlentities($cnt);?></td>
-                    <td><?php echo htmlentities($result->Name);?></td>
-                    <td><?php echo htmlentities($result->Subject);?></td>
-                    <td><?php echo htmlentities($result->Contact);?></td>
-                     <!-- Chnaged the name of coloumn name pls keep it one word only -->
-                </tr>
-                <!-- To count number of rows just like a counter -->
-                <?php $cnt=$cnt+1; 
-                    }
-                } 
-                ?>
-            </tbody>
-        </table>
-        </div>
+<table>
+  <tr>
+  <th>Faculty Name </th>
+  <th>Faculty Subject</th>
+  <th>Faculty Contact </th>
+  </tr>
+  <tr>
+  <td>Peter Swan</td>
+  <td>Software Modeling</td>
+  <td>9878976793</td>
+  </tr>
+  <tr>
+  <td>Lucky Champman</td>
+  <td>Computer Automation</td>
+  <td>7813688961</td>
+  </tr>
+  <tr>
+  <td>Joe  Kinley</td>
+  <td>UI/UX Designing</td>
+  <td>9878234122</td>
+  </tr>
+  <tr>
+  <td>Cleveland Brown</td>
+  <td>Security and Privacy in Media</td>
+  <td>7785467812</td>
+  </tr>
+</table>
+</div>
     </div>
     </div>
     </div>
     </div>
     <div id="footer" class="container">
-	<p>&copy; All rights reserved <a href="http://templated.co" rel="nofollow">@PROJECT</p>
 </div>
-    </body>
-</html>
-
-		
-	
-
 </body>
 </html>
 

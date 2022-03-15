@@ -23,6 +23,7 @@
 <!-- main logic -->
 <!doctype html>
 <html lang="en">
+    
     <head>
         <title>Attendance Details</title>
         <link rel = "icon" href = "img/icon.png" type = "image/x-icon">
@@ -96,3 +97,10 @@ tr:nth-child(even) {
 </div>
 </body>
 </html>
+
+
+
+<!-- PHP end here -->
+<?php
+    }
+?>

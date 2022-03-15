@@ -16,7 +16,6 @@
         $results=$query->fetchAll(PDO::FETCH_OBJ);
         if($query->rowCount() > 0)
         {
-            $_SESSION['username']=$email;
             $_SESSION['alogin']=$_POST['username'];
             echo "<script type='text/javascript'> document.location = 'dashboard.php'; </script>";
         } 
@@ -36,7 +35,7 @@
         <link rel = "icon" href = "img/icon.png" type = "image/x-icon">
         <link href='http://fonts.googleapis.com/css?family=Oswald:400,300' rel='stylesheet' type='text/css' />
         <link href='http://fonts.googleapis.com/css?family=Abel|Satisfy' rel='stylesheet' type='text/css' />
-        <link href="default.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/default.css" rel="stylesheet" type="text/css" media="all" />
     </head>
 
     <body>
@@ -47,7 +46,8 @@
     <div id="header-wrapper">
 	    <div id="header">
 		    <div id="logo">
-			    <h1><a href="#">SMART ATTENDANCE MANAGEMENT SYSTEM</a></h1>
+			    <h1><a>SMART ATTENDANCE MANAGEMENT SYSTEM</a>
+            </h1>
 		    </div>
         </div>
     </div>
@@ -85,7 +85,6 @@
 		</div>
 	</div>
     <div id="footer" class="container">
-	<p>&copy; All rights reserved <a href="http://templated.co" rel="nofollow">@PROJECT</p>
 </div>
     </body>
 </html>
