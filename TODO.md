@@ -10,11 +10,11 @@
 
 ### Explicit
 - Dashboard
-- - Notice Board
-- - Attendance chart
-- - Schedule/Timetable
+    - Notice Board
+    - Attendance chart
+    - Schedule/Timetable
 - Student Info
-- - pfp
-- - basic student information
+    - pfp
+    - basic student information
 - Attendence
 - Timetable
