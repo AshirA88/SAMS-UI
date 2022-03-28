@@ -28,8 +28,8 @@
 <html lang="en">
     
     <head>
-        <title>Smart Attendance Management System Using Raspberry PI</title>
-        <link rel = "icon" href = "../img/logo.png" type = "image/x-icon">
+    <link rel = "icon" href = "img/logo.png" type = "image/x-icon">
+    <title>Smart Attendance Management System Using Raspberry PI</title>
     </head>
 
     <body>
@@ -83,6 +83,14 @@
                                 <td><?php echo htmlentities($result->Password);?></td>      <!-- to print password -->
                                 <td><?php echo htmlentities($result->UserType);?></td>      <!-- to print userType A,S,T -->
                                 <td><?php echo htmlentities($result->TimeOfUpdate);?></td>  <!-- to print timeOfCreation -->
+                                <td>
+                                    <form name="#" action="javascript:select();" >
+                                        <input id="edit" type="submit" name="edit" value="Edit" />
+                                    </form>
+                                    <form name="#" action="javascript:select();" >
+                                        <input id="delete" type="submit" name="delete" value="Delete" />
+                                    </form>
+                                </td>
                             </tr>
                             <?php 
                             // increment counter
