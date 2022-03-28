@@ -12,9 +12,29 @@
 - Dashboard
     - Notice Board
     - Attendance chart
-    - Schedule/Timetable
+    - Schedule/Timetable (Opt.)
 - Student Info
     - pfp
     - basic student information
 - Attendence
 - Timetable
+
+### Admin Panel
+- Add account
+- Edit/Delete Account
+- Dashboard
+- view/delete support ticket
+
+### Student Panel
+- Dashboard
+- View attendance
+- change password
+- timetable (Opt.)
+- support ticket
+
+### Teacher Panel
+- Dashboard
+- add/view/edit student attendance
+- change password
+- support ticket
+

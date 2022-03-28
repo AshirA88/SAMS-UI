@@ -17,6 +17,9 @@
         <a class="nav-link" href="dashboard.php">Dashboard <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" href="add_account.php">Add Account</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="manage_account.php">Manage Accounts</a>
       </li>
       <li class="nav-item dropdown">
