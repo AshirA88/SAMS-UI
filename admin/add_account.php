@@ -43,6 +43,27 @@
 <head>
     <link rel = "icon" href = "../img/logo.png" type = "image/x-icon">
     <title>Smart Attendance Management System Using Raspberry PI</title>
+    <!-- VAlidation Javascript code-->
+    <script>
+function validateForm() {
+  var x = document.forms["add_account"]["UserName"].value;
+  var y = document.forms["add_account"]["Password"].value;
+  var z = document.forms["add_account"]["UserType"].value;
+  if (x == "" || x == null) {
+    alert("Username must be filled out");
+    return false;
+  }
+  if (y == "" || y == null) {
+    alert("Password must be filled out");
+    return false;
+  }
+  if (z == "" || z == null) {
+    alert("UserType must be filled out");
+    return false;
+  }
+}
+</script>
+<!-- VAlidation Javascript code-->
 </head>
 
     <body>
@@ -60,7 +81,7 @@
                 }
         ?>
 
-        <form name="add_account" method = "post">&emsp;
+        <form name="add_account" onsubmit="return validateForm()" method = "post" required>&emsp;
             <label for="UserName">UserName:<span style="color:red">*</span></label><br>&emsp;
             <input type="text" id="UserName" name="UserName" placeholder="UserName"><br>&emsp;
             <label for="Password">Password:<span style="color:red">*</span></label><br>&emsp;
