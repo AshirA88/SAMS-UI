@@ -1,90 +1,212 @@
-<!-- First skeleton made by Ashir for creating the main framework of the UI -->
-
 <!-- PHP Session to verify login with error handling -->
 <?php
     session_start();
     include('includes/config.php');
     if(isset($_POST['login']))
     {
-        $email=$_POST['username'];
+        $user=$_POST['username'];
         $password=($_POST['password']);
-        $sql ="SELECT UserName,Password FROM login WHERE UserName=:email and Password=:password";
+        $sql ="SELECT UserName,Password FROM ashir WHERE UserName=:user and Password=:password";
         $query= $dbh -> prepare($sql);
-        $query-> bindParam(':email', $email, PDO::PARAM_STR);
+        $query-> bindParam(':user', $user, PDO::PARAM_STR);
         $query-> bindParam(':password', $password, PDO::PARAM_STR);
         $query-> execute();
         $results=$query->fetchAll(PDO::FETCH_OBJ);
         if($query->rowCount() > 0)
         {
+            // To Check who is logging in A, T or S
             $_SESSION['alogin']=$_POST['username'];
-            echo "<script type='text/javascript'> document.location = 'dashboard.php'; </script>";
+            $checkType = "SELECT UserName,UserType FROM ashir";
+            $query= $dbh -> prepare($checkType);
+            $query->execute();
+            $results=$query->fetchAll(PDO::FETCH_OBJ);
+            if($query->rowCount() > 0)
+            {   
+                foreach($results as $result)
+                {
+                    if($result->UserName == $user)
+                    {
+                        if($result->UserType == 'A')        //For Admin Loggin
+                        {
+                            echo "<script type='text/javascript'> document.location = 'admin/dashboard.php'; </script>";
+                        }
+                        if($result->UserType == 'S')        //For Student Loggin
+                        {
+                            echo "<script type='text/javascript'> document.location = 'student/dashboard.php'; </script>";
+                        }
+                        if($result->UserType == 'T')        //For Teacher Loggin
+                        {
+                            echo "<script type='text/javascript'> document.location = 'teacher/dashboard.php'; </script>";
+                        }
+                    }
+                }
+                
+            }
         } 
         else
         {
-            echo "<script>alert('Invalid Details');</script>";
+            echo "<script>alert('Invalid Details');</script>"; //Error handling
         }
     }
 ?>
 
-<!-- HTML Code to take input from user -->
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="en">
-    
-    <head>
-        <title>Smart Attendance Management System Using Raspberry PI</title>
-        <link rel = "icon" href = "img/icon.png" type = "image/x-icon">
-        <link href='http://fonts.googleapis.com/css?family=Oswald:400,300' rel='stylesheet' type='text/css' />
-        <link href='http://fonts.googleapis.com/css?family=Abel|Satisfy' rel='stylesheet' type='text/css' />
-        <link href="css/default.css" rel="stylesheet" type="text/css" media="all" />
-    </head>
+<head>
+    <link rel = "icon" href = "img/logo.png" type = "image/x-icon">
+    <title>Smart Attendance Management System Using Raspberry PI</title>
+ 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <!--Stylesheet-->
+    <style media="screen">
+      *,
+*:before,
+*:after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #080710;
+}
+.background{
+    width: 430px;
+    height: 520px;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 50%;
+}
+.background .shape{
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    border-radius: 50%;
+}
+.shape:first-child{
+    background: linear-gradient(
+        #1845ad,
+        #23a2f6
+    );
+    left: -80px;
+    top: -80px;
+}
+.shape:last-child{
+    background: linear-gradient(
+        to right,
+        #ff512f,
+        #f09819
+    );
+    right: -30px;
+    bottom: -80px;
+}
+form{
+    height: 520px;
+    width: 400px;
+    background-color: rgba(255,255,255,0.13);
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    padding: 50px 35px;
+}
+form *{
+    font-family: 'Poppins',sans-serif;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
+}
+form h3{
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 42px;
+    text-align: center;
+}
 
-    <body>
-    <!-- 
-        This templete is taken from my previous project so style accordingly do not change the content part
-        in <form> which is from line 50 to 62 rest everything is supposed to be beautified 
-     -->
-    <div id="header-wrapper">
-	    <div id="header">
-		    <div id="logo">
-			    <h1><a>SMART ATTENDANCE MANAGEMENT SYSTEM</a>
-            </h1>
-		    </div>
-        </div>
+label{
+    display: block;
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 500;
+}
+input{
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(255,255,255,0.07);
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 300;
+}
+::placeholder{
+    color: #e5e5e5;
+}
+button{
+    margin-top: 50px;
+    width: 100%;
+    background-color: #ffffff;
+    color: #080710;
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.social{
+  margin-top: 30px;
+  display: flex;
+}
+.social div{
+  background: red;
+  width: 150px;
+  border-radius: 3px;
+  padding: 5px 10px 10px 5px;
+  background-color: rgba(255,255,255,0.27);
+  color: #eaf0fb;
+  text-align: center;
+}
+.social div:hover{
+  background-color: rgba(255,255,255,0.47);
+}
+.social .fb{
+  margin-left: 25px;
+}
+.social i{
+  margin-right: 4px;
+}
+
+    </style>
+</head>
+<body>
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
     </div>
-  <!--Middle page-->  
-<div id="wrapper">
-	<div id="page-wrapper">
-		<div id="page">
-		   <div id="wide-content">
-    <div class="login-page bk-img" style="background-image: url(img/banner.png);">
-		<div class="form-content">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6 col-md-offset-3">
-						<h1 class="text-center text-bold text-light mt-4x">LOGIN</h1><br>
-						<div class="well row pt-2x pb-3x bk-light">
-							<div class="col-md-8 col-md-offset-2">
-								<form method="post">
+    <form method="post">
+        <h3>Login Here</h3>
 
-									<label for="" class="text-uppercase text-sm">Your Username </label>
-									<input type="text" placeholder="Username" name="username" class="form-control mb"><br><br>
+        <label for="username">Username</label>
+        <input type="text" placeholder="Username" name="username">
 
-									<label for="" class="text-uppercase text-sm">Password</label>
-									<input type="password" placeholder="Password" name="password" class="form-control mb"><br>
-
-
-
-									<button class="button-style a:hover" name="login" type="submit">LOGIN</button>
-
-								</form>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-    <div id="footer" class="container">
-</div>
-    </body>
+        <label for="password">Password</label>
+        <input type="password" placeholder="Password" name="password">
+        <!-- <label for="text"><a href="#">Reset Password</a></label> -->
+        
+        <button name="login" type="submit">Log In</button>
+        <div class="social">
+          <div class="go"><i class="fab fa-google"></i>  Google</div>
+          <div class="fb"><i class="fab fa-facebook"></i>  Facebook</div>
+        </div>
+    </form>
+</body>
 </html>
