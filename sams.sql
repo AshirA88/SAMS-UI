@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 30, 2022 at 08:09 AM
+-- Generation Time: Mar 30, 2022 at 09:23 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.14
 
@@ -108,9 +108,9 @@ CREATE TABLE `stud_info` (
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `UserName` varchar(100) NOT NULL,
-  `Password` varchar(100) NOT NULL,
-  `UserType` varchar(10) NOT NULL,
+  `UserName` varchar(100) DEFAULT NULL,
+  `Password` varchar(100) DEFAULT NULL,
+  `UserType` varchar(10) DEFAULT NULL,
   `TimeOfUpdate` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -119,10 +119,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `UserName`, `Password`, `UserType`, `TimeOfUpdate`) VALUES
-(0, 'try', 'try@123', 'T', '2022-03-30 05:55:59'),
-(1, 'admin', 'admin', 'A', '2022-03-21 16:30:12'),
-(2, 'stud', 'stud', 'S', '2022-03-21 18:09:37'),
-(3, 'S1032181287', 'pass@123', 'S', '2022-03-28 02:53:20');
+(1, 'admin', 'admin', 'A', '2022-03-30 07:06:41');
 
 --
 -- Indexes for dumped tables
@@ -146,6 +143,16 @@ ALTER TABLE `stud_info`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -18,13 +18,12 @@
             $UserName=$_POST['UserName'];
             $Password=$_POST['Password'];
             $UserType=$_POST['UserType'];
-            $status=1;
-            $sql="INSERT INTO  users(UserName,Password,UserType,status) VALUES(:UserName,:Password,:UserType,:status)";
+            $sql="INSERT INTO  users(UserName,Password,UserType) VALUES(:UserName,:Password,:UserType)";
+            // $sql="INSERT INTO  users(UserName) VALUES(:UserName)";
             $query = $dbh->prepare($sql);
             $query->bindParam(':UserName',$UserName,PDO::PARAM_STR);
             $query->bindParam(':Password',$Password,PDO::PARAM_STR);
             $query->bindParam(':UserType',$UserType,PDO::PARAM_STR);
-            $query->bindParam(':status',$status,PDO::PARAM_STR);
             $query->execute();
             $lastInsertId = $dbh->lastInsertId();
             if($lastInsertId)
@@ -57,7 +56,7 @@
                 }
             else if($msg)
                 {   
-                    ?> <div><strong><img src="../img/success.gif" alt="" >SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php 
+                    ?> <div><strong><img src="../img/success.gif " width="350" height="250" alt="" >SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php 
                 }
         ?>
 
@@ -67,14 +66,15 @@
             <label for="Password">Password:<span style="color:red">*</span></label><br>&emsp;
             <input type="password" id="Password" name="Password" placeholder="Password"><br>&emsp;
             <label for="UserType">UserType"<span style="color:red">*</span></label><br>&emsp;
-            <input type="text" id="UserType" name="UserType" placeholder="User Type S/T/A"><br>&emsp;<br>&emsp;
-            <!-- <select name="UserType" id="UserType">
+            <!-- <input type="text" id="userty" name="userty" placeholder="User Type S/T/A"><br>&emsp;<br>&emsp; -->
+            <select name="UserType" id="UserTypepe">
                 <option value="">----Select----</option>
                 <option value="S">S</option>
                 <option value="T">T</option>
                 <option value="A">A</option>
-            </select> <br><br> -->
+            </select> <br><br>&emsp;
             <input name="submit" type="submit" value="Add">&emsp;
+            <!-- <button name="submit" type="submit">Add</button> -->
         </form> 
 
 
