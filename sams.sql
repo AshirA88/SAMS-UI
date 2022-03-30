@@ -3,13 +3,13 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 28, 2022 at 10:42 AM
+-- Generation Time: Mar 30, 2022 at 08:09 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
-SET time_zone = "+00:00"; 
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -20,29 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `sams`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `ashir`
---
-
-CREATE TABLE `ashir` (
-  `id` int(11) NOT NULL,
-  `UserName` varchar(100) NOT NULL,
-  `Password` varchar(100) NOT NULL,
-  `UserType` varchar(10) NOT NULL,
-  `TimeOfUpdate` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `ashir`
---
-
-INSERT INTO `ashir` (`id`, `UserName`, `Password`, `UserType`, `TimeOfUpdate`) VALUES
-(1, 'admin', 'admin', 'A', '2022-03-21 16:30:12'),
-(2, 'stud', 'stud', 'S', '2022-03-21 18:09:37'),
-(3, 'S1032181287', 'pass@123', 'S', '2022-03-28 02:53:20');
 
 -- --------------------------------------------------------
 
@@ -123,15 +100,33 @@ CREATE TABLE `stud_info` (
   `mobile_number` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `UserName` varchar(100) NOT NULL,
+  `Password` varchar(100) NOT NULL,
+  `UserType` varchar(10) NOT NULL,
+  `TimeOfUpdate` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `UserName`, `Password`, `UserType`, `TimeOfUpdate`) VALUES
+(0, 'try', 'try@123', 'T', '2022-03-30 05:55:59'),
+(1, 'admin', 'admin', 'A', '2022-03-21 16:30:12'),
+(2, 'stud', 'stud', 'S', '2022-03-21 18:09:37'),
+(3, 'S1032181287', 'pass@123', 'S', '2022-03-28 02:53:20');
+
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `ashir`
---
-ALTER TABLE `ashir`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `login`
@@ -145,6 +140,12 @@ ALTER TABLE `login`
 --
 ALTER TABLE `stud_info`
   ADD PRIMARY KEY (`name_id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
