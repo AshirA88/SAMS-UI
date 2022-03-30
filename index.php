@@ -6,7 +6,7 @@
     {
         $user=$_POST['username'];
         $password=($_POST['password']);
-        $sql ="SELECT UserName,Password FROM ashir WHERE UserName=:user and Password=:password";
+        $sql ="SELECT UserName,Password FROM users WHERE UserName=:user and Password=:password";
         $query= $dbh -> prepare($sql);
         $query-> bindParam(':user', $user, PDO::PARAM_STR);
         $query-> bindParam(':password', $password, PDO::PARAM_STR);
@@ -16,7 +16,7 @@
         {
             // To Check who is logging in A, T or S
             $_SESSION['alogin']=$_POST['username'];
-            $checkType = "SELECT UserName,UserType FROM ashir";
+            $checkType = "SELECT UserName,UserType FROM users";
             $query= $dbh -> prepare($checkType);
             $query->execute();
             $results=$query->fetchAll(PDO::FETCH_OBJ);

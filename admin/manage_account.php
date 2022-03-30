@@ -67,7 +67,7 @@
             <tbody>
                 <?php 
                     // PHP handle to SELECT all the data
-                    $get_data = "SELECT * FROM ashir";
+                    $get_data = "SELECT * FROM users";
                     $query = $dbh -> prepare($get_data);
                     $query->execute();
                     $results=$query->fetchAll(PDO::FETCH_OBJ);

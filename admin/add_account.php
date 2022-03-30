@@ -15,35 +15,25 @@
         // To add data to database
         if(isset($_POST['submit']))             // calling the form
         {
-            $username=$_POST['username'];
-            $mobile=$_POST['mobileno'];
-            $email=$_POST['emailid'];
-            $age=$_POST['age'];
-            $gender=$_POST['gender'];
-            $blodgroup=$_POST['bloodgroup'];
-            $address=$_POST['address'];
-            $message=$_POST['message'];
+            $UserName=$_POST['UserName'];
+            $Password=$_POST['Password'];
+            $UserType=$_POST['UserType'];
             $status=1;
-            $sql="INSERT INTO ashir(username,MobileNumber,EmailId,Age,Gender,BloodGroup,Address,Message,status) VALUES(:username,:mobile,:email,:age,:gender,:blodgroup,:address,:message,:status)";
+            $sql="INSERT INTO  users(UserName,Password,UserType,status) VALUES(:UserName,:Password,:UserType,:status)";
             $query = $dbh->prepare($sql);
-            $query->bindParam(':username',$username,PDO::PARAM_STR);
-            $query->bindParam(':mobile',$mobile,PDO::PARAM_STR);
-            $query->bindParam(':email',$email,PDO::PARAM_STR);
-            $query->bindParam(':age',$age,PDO::PARAM_STR);
-            $query->bindParam(':gender',$gender,PDO::PARAM_STR);
-            $query->bindParam(':blodgroup',$blodgroup,PDO::PARAM_STR);
-            $query->bindParam(':address',$address,PDO::PARAM_STR);
-            $query->bindParam(':message',$message,PDO::PARAM_STR);
+            $query->bindParam(':UserName',$UserName,PDO::PARAM_STR);
+            $query->bindParam(':Password',$Password,PDO::PARAM_STR);
+            $query->bindParam(':UserType',$UserType,PDO::PARAM_STR);
             $query->bindParam(':status',$status,PDO::PARAM_STR);
             $query->execute();
             $lastInsertId = $dbh->lastInsertId();
             if($lastInsertId)
             {
-            $msg="Your info submitted successfully";
+                $msg="Your info submitted successfully";
             }
             else
             {
-            $error="Something went wrong. Please try again";
+                $error="Something went wrong. Please try again";
             }
         }
 
@@ -52,22 +42,39 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <link rel = "icon" href = "img/logo.png" type = "image/x-icon">
+    <link rel = "icon" href = "../img/logo.png" type = "image/x-icon">
     <title>Smart Attendance Management System Using Raspberry PI</title>
 </head>
 
     <body>
         
         <h2>&emsp;Add New Account Details</h2>
+        
+        <?php 
+            if($error)
+                {
+                    ?> <div><strong>ERROR</strong>:<?php echo htmlentities($error); ?> </div><?php 
+                }
+            else if($msg)
+                {   
+                    ?> <div><strong><img src="../img/success.gif" alt="" >SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php 
+                }
+        ?>
 
         <form name="add_account" method = "post">&emsp;
-            <label for="Username:">Username:</label><br>&emsp;
-            <input type="text" id="Username:" name="Username:" value=""><br>&emsp;
-            <label for="Password:">Password:</label><br>&emsp;
-            <input type="text" id="Password:" name="Password:" value=""><br>&emsp;
-            <label for="UserType">UserType"</label><br>&emsp;
-            <input type="text" id="UserType" name="UserType" value=""><br>&emsp;<br>&emsp;
-            <input type="submit" value="Add">&emsp;
+            <label for="UserName">UserName:<span style="color:red">*</span></label><br>&emsp;
+            <input type="text" id="UserName" name="UserName" placeholder="UserName"><br>&emsp;
+            <label for="Password">Password:<span style="color:red">*</span></label><br>&emsp;
+            <input type="password" id="Password" name="Password" placeholder="Password"><br>&emsp;
+            <label for="UserType">UserType"<span style="color:red">*</span></label><br>&emsp;
+            <input type="text" id="UserType" name="UserType" placeholder="User Type S/T/A"><br>&emsp;<br>&emsp;
+            <!-- <select name="UserType" id="UserType">
+                <option value="">----Select----</option>
+                <option value="S">S</option>
+                <option value="T">T</option>
+                <option value="A">A</option>
+            </select> <br><br> -->
+            <input name="submit" type="submit" value="Add">&emsp;
         </form> 
 
 
