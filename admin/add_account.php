@@ -19,7 +19,7 @@
             $Password=$_POST['Password'];
             $UserType=$_POST['UserType'];
             $sql="INSERT INTO  users(UserName,Password,UserType) VALUES(:UserName,:Password,:UserType)";
-            // $sql="INSERT INTO  users(UserName) VALUES(:UserName)";
+            // $sql="INSERT INTO  users(UserName) VALUES(:UserName,:Password)";
             $query = $dbh->prepare($sql);
             $query->bindParam(':UserName',$UserName,PDO::PARAM_STR);
             $query->bindParam(':Password',$Password,PDO::PARAM_STR);
