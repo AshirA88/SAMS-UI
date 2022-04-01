@@ -11,6 +11,33 @@
     {
         //main logic
         include('../includes/header.php');      // header
+        
+        // Update Data
+        if(isset($_POST['update']))
+        {
+            $UserName=$_POST['UserName'];
+            $Password=$_POST['Password'];
+            $UserType=$_POST['UserType'];
+            $sql="UPDATE users SET UserName=:UserName,Password=:Password,UserType=:UserType";
+            $query = $dbh->prepare($sql);
+            $query->bindParam(':UserName',$UserName,PDO::PARAM_STR);
+            $query->bindParam(':Password',$Password,PDO::PARAM_STR);
+            $query->bindParam(':UserType',$UserType,PDO::PARAM_STR);
+            $query->execute();
+            $msg="Info Updateed Successfully";
+        }
+
+        // Delete data
+        if(isset($_REQUEST['del']))
+        {
+            $did=intval($_GET['del']);
+            $sql = "DELETE FROM users WHERE id=:did";
+            $query = $dbh->prepare($sql);
+            $query-> bindParam(':did',$did, PDO::PARAM_STR);
+            $query -> execute();
+
+            $msg="Record deleted Successfully ";
+        }
 ?>
 
 <!-- CSS and JS -->
@@ -36,7 +63,16 @@
         <br>
         <h2>Printing the database of people</h2>
         <br>
-        
+        <?php 
+            if($error)
+                {
+                    ?> <div><strong>ERROR</strong>:<?php echo htmlentities($error); ?> </div><?php 
+                }
+            else if($msg)
+                {   
+                    ?> <div><strong><img src="../img/success.gif " width="350" height="250" alt="" >SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php 
+                }
+        ?>
         <!-- Table starts here -->
         <table id="data" cellspacing="0" width="100%" class="table">
             <!-- Header of table -->
@@ -74,51 +110,59 @@
                     $cnt = 1;                                       // to start the counter
                     if($query->rowCount() > 0)
                         {
-                        foreach($results as $result)
-                            {				
-                ?>
-                            <tr>
-                                <th scope="row"><?php echo htmlentities($cnt);?></th>       <!-- to print counter -->
-                                <td><?php echo htmlentities($result->UserName);?></td>      <!-- to print username -->
-                                <td><?php echo htmlentities($result->Password);?></td>      <!-- to print password -->
-                                <td><?php echo htmlentities($result->UserType);?></td>      <!-- to print userType A,S,T -->
-                                <td><?php echo htmlentities($result->TimeOfUpdate);?></td>  <!-- to print timeOfCreation -->
-                                <td>
-                                    <!-- Button trigger modal -->
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit_data">
-                                        Edit
-                                    </button>
-
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="edit_data" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalCenterTitle">Edit Data</h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    ...
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                    <button type="button" class="btn btn-primary">Save changes</button>
+                            foreach($results as $result)
+                                {				
+                    ?>
+                                <tr>
+                                    <th scope="row"><?php echo htmlentities($cnt);?></th>       <!-- to print counter -->
+                                    <td><?php echo htmlentities($result->UserName);?></td>      <!-- to print username -->
+                                    <td><?php echo htmlentities($result->Password);?></td>      <!-- to print password -->
+                                    <td><?php echo htmlentities($result->UserType);?></td>      <!-- to print userType A,S,T -->
+                                    <td><?php echo htmlentities($result->TimeOfUpdate);?></td>  <!-- to print timeOfCreation -->
+                                    <td>
+                                        <!-- Edit Data -->
+                                        <!-- Button trigger modal for edit -->
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit_data">
+                                            Edit
+                                        </button>
+                                <form method="post" name="edit_data" onSubmit="return valid();">
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="edit_data" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalCenterTitle">Edit Data</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <!-- PHP to get single data of user -->
+                                                        <label>UserName:</label>
+                                                        <input type="text" id="UserName" name="UserName" value="<?php echo htmlentities($result->UserName);?>"> <br>
+                                                        <label>Password:</label>
+                                                        <input type="text" id="Password" name="Password" value="<?php echo htmlentities($result->Password);?>"> <br>
+                                                        <label>UserType:</label>
+                                                        <input type="text" id="UserType" name="UserType" value="<?php echo htmlentities($result->UserType);?>"> <br>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-primary" name="update">Save changes</button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    
-                                    <form name="#" action="javascript:select();" >
-                                        <input id="delete" type="submit" name="delete" value="Delete" />
-                                    </form>
-                                </td>
-                            </tr>
-                            <?php 
-                            // increment counter
-                            $cnt += 1; 
-                            }
+                                </form>
+                                        <!-- Delete Data -->
+                                        <form>
+                                            <button type="button" class="btn btn-primary" onclick="manage_account.php?del=<?php echo htmlentities($result->id);?>" onclick="return confirm('Do you really want to delete this record')"> Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                <?php 
+                                // increment counter
+                                $cnt += 1; 
+                                }
                         } 
                             ?>
 

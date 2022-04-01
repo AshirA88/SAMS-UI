@@ -89,7 +89,7 @@
             <label for="UserName">UserName:<span style="color:red">*</span></label><br>&emsp;
             <input type="text" id="UserName" name="UserName" placeholder="UserName" required pattern="[a-zA-Z0-9]+" title="UserName can only be Alphanumeric without spaces" required data-validation-required-message="Please enter UserName."><br>&emsp;
             <label for="Password">Password:<span style="color:red">*</span></label><br>&emsp;
-            <input type="password" id="Password" name="Password" placeholder="Password"><br>&emsp;
+            <input type="text" id="Password" name="Password" placeholder="Password"><br>&emsp;
             <label for="UserType">UserType"<span style="color:red">*</span></label><br>&emsp;
             <!-- <input type="text" id="userty" name="userty" placeholder="User Type S/T/A"><br>&emsp;<br>&emsp; -->
             <select name="UserType" id="UserTypepe">
