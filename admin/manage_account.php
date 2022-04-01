@@ -13,13 +13,15 @@
         include('../includes/header.php');      // header
         
         // Update Data
-        if(isset($_POST['update']))
-        {
+        if(isset($_REQUEST['update']))
+        {   
+            $uid=$_POST['id'];
             $UserName=$_POST['UserName'];
             $Password=$_POST['Password'];
             $UserType=$_POST['UserType'];
-            $sql="UPDATE users SET UserName=:UserName,Password=:Password,UserType=:UserType";
+            $sql="UPDATE users SET UserName=:UserName,Password=:Password,UserType=:UserType WHERE id=:uid";
             $query = $dbh->prepare($sql);
+            $query->bindParam(':uid',$uid,PDO::PARAM_STR);
             $query->bindParam(':UserName',$UserName,PDO::PARAM_STR);
             $query->bindParam(':Password',$Password,PDO::PARAM_STR);
             $query->bindParam(':UserType',$UserType,PDO::PARAM_STR);
@@ -59,7 +61,17 @@
     <title>Smart Attendance Management System Using Raspberry PI</title>
     </head>
 
-    <body>
+    <!-- JS to hide id in Modal -->
+    <script>
+        function id_hide()
+        {
+            document.getElementById("id").style.display = "none";
+        }
+    </script>
+
+
+
+    <body onload="id_hide()">
         <br>
         <h2>Printing the database of people</h2>
         <br>
@@ -118,41 +130,46 @@
                                     <td><?php echo htmlentities($result->UserName);?></td>      <!-- to print username -->
                                     <td><?php echo htmlentities($result->Password);?></td>      <!-- to print password -->
                                     <td><?php echo htmlentities($result->UserType);?></td>      <!-- to print userType A,S,T -->
-                                    <td><?php echo htmlentities($result->TimeOfUpdate);?></td>  <!-- to print timeOfCreation -->
+                                    <td><?php echo htmlentities($result->TimeOfCreation);?></td>  <!-- to print timeOfCreation -->
                                     <td>
                                         <!-- Edit Data -->
                                         <!-- Button trigger modal for edit -->
                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit_data">
                                             Edit
                                         </button>
-                                <form method="post" name="edit_data" onSubmit="return valid();">
-                                        <!-- Modal -->
-                                        <div class="modal fade" id="edit_data" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalCenterTitle">Edit Data</h5>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <!-- PHP to get single data of user -->
-                                                        <label>UserName:</label>
-                                                        <input type="text" id="UserName" name="UserName" value="<?php echo htmlentities($result->UserName);?>"> <br>
-                                                        <label>Password:</label>
-                                                        <input type="text" id="Password" name="Password" value="<?php echo htmlentities($result->Password);?>"> <br>
-                                                        <label>UserType:</label>
-                                                        <input type="text" id="UserType" name="UserType" value="<?php echo htmlentities($result->UserType);?>"> <br>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                        <button type="submit" class="btn btn-primary" name="update">Save changes</button>
+                                        <form method="post" name="edit_data" onSubmit="return valid();">
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="edit_data" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalCenterTitle">Edit Data</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <!-- PHP to get single data of user -->
+                                                                <label>UserName:</label>
+                                                                <input type="text" id="UserName" name="UserName" value="<?php echo htmlentities($result->UserName);?>"> <br>
+                                                                <label>Password:</label>
+                                                                <input type="text" id="Password" name="Password" value="<?php echo htmlentities($result->Password);?>"> <br>
+                                                                <label>UserType:</label>
+                                                                <input type="text" id="UserType" name="UserType" value="<?php echo htmlentities($result->UserType);?>"> <br>
+                                                                <!-- <label>id:</label> -->
+                                                                <input type="text" id="id" name="id" value="<?php echo htmlentities($result->id);?>"> <br>
+                                                                <!-- <br name ="id" value="<?php //echo htmlentities($result->id);?>"> -->
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                <button type="submit" class="btn btn-primary" name="update">Save changes</button>
+                                                                <!--  href="manage_account.php?update=<?php //echo htmlentities($result->id);?>" -->
+                                                                <!-- <button  type="submit" class="btn btn-primary" name="update" ><a class="btn btn-primary" href="manage_account.php?update=<?php //echo htmlentities($result->id);?>" onclick="return confirm('Do you really want to edit this record')"> Edit</a></button> -->
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                </form>
+                                        </form>
                                         <!-- Delete single data -->
                                         <form>
                                             <a class="btn btn-primary" href="manage_account.php?del=<?php echo htmlentities($result->id);?>" onclick="return confirm('Do you really want to delete this record')"> Delete</a>
