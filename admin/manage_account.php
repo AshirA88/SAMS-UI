@@ -153,7 +153,7 @@
                                             </div>
                                         </div>
                                 </form>
-                                        <!-- Delete Data -->
+                                        <!-- Delete single data -->
                                         <form>
                                             <button type="button" class="btn btn-primary" onclick="manage_account.php?del=<?php echo htmlentities($result->id);?>" onclick="return confirm('Do you really want to delete this record')"> Delete</button>
                                         </form>
