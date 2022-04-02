@@ -13,7 +13,7 @@
     include('includes/config.php');
     if(strlen($_SESSION['alogin'])==0)
     {
-        header('location:index.php');
+        header('location:../index.php');
     }
     else
     {
@@ -23,13 +23,12 @@
 <!-- main logic -->
 <!doctype html>
 <html lang="en">
-    
     <head>
-        <title>Attendance Details</title>
-        <link rel = "icon" href = "img/icon.png" type = "image/x-icon">
+        <title>Smart Attendance Management System Using Raspberry PI</title>
+        <link href = "../img/logo.png">
     </head>
 
-    <body >
+    <body>
     
     </body>
 </html>
