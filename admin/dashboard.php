@@ -21,11 +21,17 @@
         <title>Smart Attendance Management System Using Raspberry PI</title>
         <link rel = "icon" href = "../img/logo.png" type = "image/x-icon">
     </head>
+    <style>
+        body {
+                background-image: url('../img/download.jpg');
+             }
+</style>            
 
     <body>
+    <p style="background-image: url('img_girl.jpg');">
     <h1><a href = "logout.php"> Logout </a> </h1>                   <!-- Logout to homepage -->
     <h1><a href = "manage_account.php"> Management </a> </h1>       <!-- Redirect to manage_account.php from further CRUD operations -->
-    
+    </p
     
     </body>
 </html>
