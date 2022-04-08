@@ -19,7 +19,7 @@
             $UserName=$_POST['UserName'];
             $Password=$_POST['Password'];
             $UserType=$_POST['UserType'];
-            $sql="UPDATE users SET UserName=:UserName,Password=:Password,UserType=:UserType WHERE id=:uid";
+            $sql="UPDATE users SET UserName=:UserName,Password=:Password,UserType=:UserType WHERE UserName=:UserName";
             $query = $dbh->prepare($sql);
             $query->bindParam(':uid',$uid,PDO::PARAM_STR);
             $query->bindParam(':UserName',$UserName,PDO::PARAM_STR);
