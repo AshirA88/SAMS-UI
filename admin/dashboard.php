@@ -20,16 +20,25 @@
     <head>
         <title>Smart Attendance Management System Using Raspberry PI</title>
         <link rel = "icon" href = "../img/logo.png" type = "image/x-icon">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <!-- include jQuery UI -->
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+   
     </head>
 
     <style>
-        body {
-                /* background-image: url('../img/download.jpg');         hate this whoever made this shitty thing */
-             }
+        .rightcalendar {
+            position: absolute;
+            right: 150px;  
+            width: 200px;
+            height: 120px;      
+               }
         div
         {
             max-height: 700px
         }
+
     </style>            
 
     <body>
@@ -51,6 +60,7 @@
     </div>
     <div class="carousel-item">
         <img src="../img/carousel2.jpg" alt="Chicago" class="d-block" style="width:100%">
+        
     </div>
     <div class="carousel-item">
         <img src="../img/carousel3.jpg" alt="New York" class="d-block" style="width:100%">
@@ -65,11 +75,27 @@
     <span class="carousel-control-next-icon"></span>
     </button>
     </div>
+    <hr>
+    <!--calendar -->
+    <div class="rightcalendar" id="Datepicker1"><span><h2>Calendar</h2></span></div><br>
 
-    <h1><a href = "logout.php"> Logout </a> </h1>                   <!-- Logout to homepage -->
-    <h1><a href = "manage_account.php"> Management </a> </h1>       <!-- Redirect to manage_account.php from further CRUD operations -->
-    
+    <script type="text/javascript">
+     $(function() {
+    $("#Datepicker1").datepicker({
+    numberOfMonths: 1
+     }); 
+    });
+    </script>
+    <!--calendar ends -->
+    <h1><button><a href = "logout.php"> Logout </a>  </button>  </h1>                <!-- Logout to homepage -->
+    <h1><button><a href = "manage_account.php"> Management </a><button> </h1>       <!-- Redirect to manage_account.php from further CRUD operations -->
+</div>
+<br><br><br><br><br>
+    <div>
+    <img src="../img/download.jpg" alt="New York" width="100%" height="150">
+</div>
     </body>
+    
 </html>
 
 <!-- PHP end here -->
