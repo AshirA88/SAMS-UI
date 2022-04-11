@@ -33,7 +33,7 @@
             right: 150px;  
             width: 200px;
             height: 120px;      
-               }
+        }
         div
         {
             max-height: 700px
@@ -59,8 +59,7 @@
         <img src="../img/carousel1.jpg" alt="Los Angeles" class="d-block" style="width:100%">
     </div>
     <div class="carousel-item">
-        <img src="../img/carousel2.jpg" alt="Chicago" class="d-block" style="width:100%">
-        
+        <img src="../img/carousel2.jpg" alt="Chicago" class="d-block" style="width:100%"> 
     </div>
     <div class="carousel-item">
         <img src="../img/carousel3.jpg" alt="New York" class="d-block" style="width:100%">
@@ -89,11 +88,11 @@
     <!--calendar ends -->
     <h1><button><a href = "logout.php"> Logout </a>  </button>  </h1>                <!-- Logout to homepage -->
     <h1><button><a href = "manage_account.php"> Management </a><button> </h1>       <!-- Redirect to manage_account.php from further CRUD operations -->
-</div>
-<br><br><br><br><br>
+    </div>
+    <br><br><br><br><br>
     <div>
     <img src="../img/download.jpg" alt="New York" width="100%" height="150">
-</div>
+    </div>
     </body>
     
 </html>
