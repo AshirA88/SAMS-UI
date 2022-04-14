@@ -11,6 +11,8 @@
     {
         //main logic
         include('../includes/header_teacher.php');
+
+    
 ?>
 
 <!-- main logic -->
@@ -23,11 +25,13 @@
     </head>
 
     <body>
-    <h1>Reached</h1>
-    
+        
+    </body>
 </html>
 
 <!-- PHP end here -->
+
+
 <?php
     }
 ?>
