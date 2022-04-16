@@ -26,7 +26,6 @@
     <h1>Reached</h1>
     
 </html>
-
 <!-- PHP end here -->
 <?php
     }
