@@ -64,9 +64,10 @@
 <input type="button" id="upload" value="Upload" onclick="Upload()" />
 <hr />
 <div id="dvCSV">
-</div>
-
-<input type="button" value="Save">
+    </div>
+    
+    <input type="button" value="Save">
+    <a href="add_csv.php">Add -made by Ashir</a>
     </body>
 </html>
 -->
