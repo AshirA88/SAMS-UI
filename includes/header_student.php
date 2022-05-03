@@ -40,7 +40,7 @@ Old Update (4.1.3)
 
 <nav class="navbar navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="dashboard.php">SAMS - Teacher Control</a>
+    <a class="navbar-brand" href="dashboard.php">SAMS - Student Control</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -50,11 +50,9 @@ Old Update (4.1.3)
           <a class="nav-link" href="dashboard.php">Dashboard </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="add_attendance.php">Add Attendance (Backup)</a>
+          <a class="nav-link" href="view_attendance.php">View Attendance</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="manage_attendance.php">Manage Attendance</a>
-        </li>
+        
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Account Settings
