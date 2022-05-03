@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 16, 2022 at 04:07 PM
+-- Generation Time: May 03, 2022 at 11:45 AM
 -- Server version: 10.4.17-MariaDB
--- PHP Version: 7.4.14
+-- PHP Version: 7.3.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,22 +18,28 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `sams`
+-- Database: `samss`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `table1`
+-- Table structure for table `record`
 --
 
-CREATE TABLE `table1` (
-  `PRN` varchar(11) NOT NULL,
-  `stud_mail` varchar(55) NOT NULL,
-  `stud_name` varchar(55) NOT NULL,
-  `sub_code` varchar(55) NOT NULL,
-  `attnd` varchar(55) NOT NULL
+CREATE TABLE `record` (
+  `id` int(255) DEFAULT NULL,
+  `Attende` int(255) DEFAULT NULL,
+  `Timestamp` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `record`
+--
+
+INSERT INTO `record` (`id`, `Attende`, `Timestamp`) VALUES
+(0, NULL, '2022-05-03 09:43:22'),
+(1, 0, '2022-05-03 09:43:22');
 
 -- --------------------------------------------------------
 
