@@ -10,6 +10,7 @@
     else
     {
         //main logic
+        include('../includes/header_student.php');
 ?>
 
 <!-- main logic -->
