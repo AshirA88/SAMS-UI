@@ -77,6 +77,7 @@
     </button>
     </div>
     <hr>
+    <br><br><br><br><br>
     <!--calendar -->
     <div class="rightcalendar" id="Datepicker1"><span><h2>Calendar</h2></span></div><br>
 
@@ -89,11 +90,7 @@
     </script>
     </div>
     <!--calendar ends -->
-
-    <br><br><br><br><br>
-    <div>
-    <img src="../img/download.jpg" width="100%" height="150">
-    </div>
+   
     </body>
     
 </html>
