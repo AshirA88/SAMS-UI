@@ -6,16 +6,19 @@
     {
         $user=$_POST['username'];
         $password=($_POST['password']);
-        $sql ="SELECT UserName,Password FROM users WHERE UserName=:user and Password=:password";
+        $id=($_POST['ID']);
+        $sql ="SELECT UserName,Password,id FROM users WHERE UserName=:user and Password=:password and id=:id";
         $query= $dbh -> prepare($sql);
         $query-> bindParam(':user', $user, PDO::PARAM_STR);
         $query-> bindParam(':password', $password, PDO::PARAM_STR);
+        $query-> bindParam(':id', $id, PDO::PARAM_STR);
         $query-> execute();
         $results=$query->fetchAll(PDO::FETCH_OBJ);
         if($query->rowCount() > 0)
         {
             // To Check who is logging in A, T or S
             $_SESSION['alogin']=$_POST['username'];
+            $_SESSION['ID']=$_POST['ID'];
             $checkType = "SELECT UserName,UserType FROM users";
             $query= $dbh -> prepare($checkType);
             $query->execute();
@@ -194,6 +197,9 @@ button{
     </div>
     <form method="post">
         <h3>Login Here</h3>
+
+        <label for="ID">ID</label>
+        <input type="text" placeholder="ID" name="ID">
 
         <label for="username">Username</label>
         <input type="text" placeholder="Username" name="username">
