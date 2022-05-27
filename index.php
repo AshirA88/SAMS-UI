@@ -209,10 +209,10 @@ button{
         <!-- <label for="text"><a href="#">Reset Password</a></label> -->
         
         <button name="login" type="submit">Log In</button>
-        <div class="social">
+        <!-- <div class="social">
           <div class="go"><i class="fab fa-google"></i>  Google</div>
           <div class="fb"><i class="fab fa-facebook"></i>  Facebook</div>
-        </div>
+        </div> -->
     </form>
 </body>
 </html>
