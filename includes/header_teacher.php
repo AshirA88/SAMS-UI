@@ -53,7 +53,7 @@ Old Update (4.1.3)
           <a class="nav-link" href="add_attendance.php">Add Attendance (Backup)</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="manage_attendance.php">Manage Attendance</a>
+          <a class="nav-link" href="view_attendance.php">View Attendance</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
