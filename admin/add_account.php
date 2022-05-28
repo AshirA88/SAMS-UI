@@ -17,13 +17,15 @@
         {
             $UserName=$_POST['UserName'];
             $Password=$_POST['Password'];
+            $ID=$_POST['ID'];
             $UserType=$_POST['UserType'];
-            $sql="INSERT INTO  users(UserName,Password,UserType) VALUES(:UserName,:Password,:UserType)";
+            $sql="INSERT INTO  users(UserName,Password,UserType, id) VALUES(:UserName,:Password,:UserType, :ID)";
             // $sql="INSERT INTO  users(UserName) VALUES(:UserName,:Password)";
             $query = $dbh->prepare($sql);
             $query->bindParam(':UserName',$UserName,PDO::PARAM_STR);
             $query->bindParam(':Password',$Password,PDO::PARAM_STR);
             $query->bindParam(':UserType',$UserType,PDO::PARAM_STR);
+            $query->bindParam(':ID',$ID,PDO::PARAM_STR);
             $query->execute();
             $lastInsertId = $dbh->lastInsertId();
             if($lastInsertId)
@@ -90,6 +92,8 @@
             <input type="text" id="UserName" name="UserName" placeholder="UserName" required pattern="[a-zA-Z0-9]+" title="UserName can only be Alphanumeric without spaces" required data-validation-required-message="Please enter UserName."><br>&emsp;
             <label for="Password">Password:<span style="color:red">*</span></label><br>&emsp;
             <input type="text" id="Password" name="Password" placeholder="Password"><br>&emsp;
+            <label for="ID">ID:<span style="color:red">*</span></label><br>&emsp;
+            <input type="text" id="ID" name="ID" placeholder="ID"><br>&emsp;
             <label for="UserType">UserType<span style="color:red">*</span></label><br>&emsp;
             <!-- <input type="text" id="userty" name="userty" placeholder="User Type S/T/A"><br>&emsp;<br>&emsp; -->
             <select name="UserType" id="UserType">

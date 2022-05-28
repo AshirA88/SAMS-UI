@@ -19,7 +19,7 @@
             $UserName=$_POST['UserName'];
             $Password=$_POST['Password'];
             $UserType=$_POST['UserType'];
-            $sql="UPDATE users SET UserName=:UserName,Password=:Password,UserType=:UserType WHERE UserName=:UserName";
+            $sql="UPDATE users SET UserName=:UserName,Password=:Password,UserType=:UserType WHERE id=:uid";
             $query = $dbh->prepare($sql);
             $query->bindParam(':uid',$uid,PDO::PARAM_STR);
             $query->bindParam(':UserName',$UserName,PDO::PARAM_STR);
@@ -47,23 +47,13 @@
 <html lang="en">
     
     <head>
-    <link rel = "icon" href = "img/logo.png" type = "image/x-icon">
-    <title>Smart Attendance Management System Using Raspberry PI</title>
+        <link rel = "icon" href = "img/logo.png" type = "image/x-icon">
+        <title>Smart Attendance Management System Using Raspberry PI</title>
     </head>
 
-    <!-- JS to hide id in Modal -->
-    <script>
-        function id_hide()
-        {
-            document.getElementById("id").style.display = "none";
-        }
-    </script>
-
-
-
-    <body onload="id_hide()">
+    <body>
         <br>
-        <h2>Printing the database of people</h2>
+        <h2>&emsp;Manage data Users</h2>
         <br>
         <?php 
             if($error)
@@ -80,7 +70,8 @@
             <!-- Header of table -->
             <thead class="thead-dark">
                 <tr class="table-dark">
-                    <th scope="row">#</th>
+                    <th scope="row"></th>
+                    <th>ID</th>
                     <th>Username</th>
                     <th>Password</th>
                     <th>UserType</th>
@@ -92,7 +83,8 @@
             <!-- Footer of table -->
             <tfoot class="thead-light">
                 <tr class="table-secondary">
-                    <th scope="row">#</th>
+                    <th scope="row"></th>
+                    <th>ID</th>
                     <th>Username</th>
                     <th>Password</th>
                     <th>UserType</th>
@@ -100,7 +92,7 @@
                     <th>Action </th>
                 </tr>
             </tfoot>
-
+            
             <!-- Body of table -->
             <tbody>
                 <?php 
@@ -111,12 +103,13 @@
                     $results=$query->fetchAll(PDO::FETCH_OBJ);
                     $cnt = 1;                                       // to start the counter
                     if($query->rowCount() > 0)
-                        {
-                            foreach($results as $result)
-                                {				
-                    ?>
+                    {
+                        foreach($results as $result)
+                        {				
+                            ?>
                                 <tr>
                                     <th scope="row"><?php echo htmlentities($cnt);?></th>       <!-- to print counter -->
+                                    <td><?php echo htmlentities($result->id);?></td>      <!-- to print ID -->
                                     <td><?php echo htmlentities($result->UserName);?></td>      <!-- to print username -->
                                     <td><?php echo htmlentities($result->Password);?></td>      <!-- to print password -->
                                     <td><?php echo htmlentities($result->UserType);?></td>      <!-- to print userType A,S,T -->
@@ -124,29 +117,30 @@
                                     <td>
                                         <!-- Edit Data -->
                                         <!-- Button trigger modal -->
-                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                             Edit
-                                        </button>
-
+                                        </button> -->
+                                        
                                         <!-- Modal -->
                                         <form method="post" name="edit_data" onSubmit="return valid();">
                                             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog modal-dialog-centered">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Edit Data</h5>
+                                                            <h5 class="modal-title" id="exampleModalLabel">Edit Data&ensp;</h6>
+                                                            <h6 class="modal-title" id="exampleModalLabel">(Enter ID of user you want to edit)</h5>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
                                                             <!-- PHP to get single data of user -->
+                                                            <label>id:</label>
+                                                            <input type="text" id="id" name="id" placeholder="for eg. <?php echo htmlentities($result->id);?>"> <br>
                                                             <label>UserName:</label>
-                                                            <input type="text" id="UserName" name="UserName" value="<?php echo htmlentities($result->UserName);?>"> <br>
+                                                            <input type="text" id="UserName" name="UserName" placeholder="for eg. <?php echo htmlentities($result->UserName);?>"> <br>
                                                             <label>Password:</label>
-                                                            <input type="text" id="Password" name="Password" value="<?php echo htmlentities($result->Password);?>"> <br>
+                                                            <input type="text" id="Password" name="Password" placeholder="for eg. <?php echo htmlentities($result->Password);?>"> <br>
                                                             <label>UserType:</label>
-                                                            <input type="text" id="UserType" name="UserType" value="<?php echo htmlentities($result->UserType);?>"> <br>
-                                                            <!-- <label>id:</label> -->
-                                                            <input type="text" id="id" name="id" value="<?php echo htmlentities($result->id);?>"> <br>
+                                                            <input type="text" id="UserType" name="UserType" placeholder="for eg. <?php echo htmlentities($result->UserType);?>"> <br>
                                                             <!-- <br name ="id" value="<?php //echo htmlentities($result->id);?>"> -->
                                                         </div>
                                                         <div class="modal-footer">
@@ -167,16 +161,19 @@
                                 <?php 
                                 // increment counter
                                 $cnt += 1; 
-                                }
+                            }
                         } 
                             ?>
 
             </tbody>
         </table>
+        <br>
+        <p>&emsp;Edit data of database: <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button> </p>
+        <br>
     </body>
-</html>
+    </html>
 
-<!-- PHP end here -->
-<?php
+    <!-- PHP end here -->
+    <?php
     }
-?>
+    ?>
